@@ -21,6 +21,11 @@ The repo comes with an `example.env` file that you will want to (but really shou
 Service|Variable|Why am I setting this?
 -|-|-
 **Nginx**|`HOSTNAME`|Domain name of the machine used to host this stack, can be `localhost`
+**XI**|`DB_CONTAINER`|Name of the database container for reference. 
+**XI**|`DB_NAME`|Name of the database in the database container.
+**XI**|`COLLECTION_NAME`|Name of the mongo db collection.
+**XI**|`SITE_ROOT`|Url root for the XI service, optional.
+**XI**|`SITE_NAME`|Name for the html title.
 
 ### Setting up SSL
 This stack uses Certbot and Nginx to handle SSL, including temporary self-signed certs to help the process along.  We run the `init-ssl.sh` script during setup to place these into a directory corresponding to Nginx's `HOSTNAME` variable.  
