@@ -12,7 +12,6 @@ Setup is pretty straightforward, we need to ensure that Docker is installed and 
 - `cd xi-lite`
 - `sudo ./install-reqs.sh`
 - `cp example.env .env`
-- Populate the `.env` file (see below)
 - `cp xi/config.example.js xi/config.js`
 - Populate the `.env` file (see below)
 - `sudo ./init-ssl.sh <HOSTNAME>` (see below)
