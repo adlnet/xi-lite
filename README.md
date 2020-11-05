@@ -29,11 +29,9 @@ Service|Variable|Why am I setting this?
 **^**|`COLLECTION_NAME`|Name of the mongo db collection.
 **^**|`SITE_ROOT`|Url root for the XI service, optional.
 **^**|`SITE_NAME`|Name for the html title.
-
 **^**|`KEYCLOAK_URL`|Root path for the intended Keycloak server.
 **^**|`KEYCLOAK_REALM`|Realm name for the Keycloak instance.
 **^**|`KEYCLOAK_CLIENT`|Client name for the Keycloak instance.
-
 **^**|`API_SECRET`|The secret that will be used for API queries with the XI.
 **^**|`EXACT_RESOLUTION_MATCH`|Whether or not the competency and URL filtering will require exact string matches.
 
