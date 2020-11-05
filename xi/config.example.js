@@ -6,7 +6,7 @@ module.exports = {
         "realm": (process.env.KEYCLOAK_REALM || "tla"),
         "auth-server-url": (process.env.KEYCLOAK_URL || "http://localhost:8080/auth"),
         "ssl-required": "none",
-        "resource": "static-content-viewer",
+        "resource": (process.env.KEYCLOAK_CLIENT || "static-content-viewer"),
         "public-client": true,
         "confidential-port": 0
     },
