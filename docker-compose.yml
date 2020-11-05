@@ -64,6 +64,8 @@ services:
       MONGO_HOST: ${DB_CONTAINER}
       MONGO_INITDB_DATABASE: ${DB_NAME}
       MONGO_COLLECTION: ${COLLECTION_NAME}
+      API_SECRET : ${API_SECRET}
+      EXACT_RESOLUTION_MATCH: ${EXACT_RESOLUTION_MATCH }
     networks:
       - public
     restart: on-failure
