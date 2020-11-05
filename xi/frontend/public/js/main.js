@@ -5,7 +5,11 @@ function buildCard(course) {
 
     return `<div id="${course['_id']}" class="col-sm-4 mb-4">
               <div class="card h-100">
-                <img src="${course['thumbnailUrl']}" class="card-img-top" id="${course['_id']}-thumbnailUrl" alt=" ">
+                <a target="_blank" href="${course['url']}">
+                    <object data="${course['thumbnailUrl']}" type="image/png">
+                        <img src="img/book.png" style="width: 100%" alt="">
+                    </object>
+                </a>
                   <div class="card-body" >
                     <h5 class="card-title" id="${course['_id']}-name" >${course['name']}</h5> 
                     <p class="card-text" id="${course['_id']}-description" >${course['description']}</p>
