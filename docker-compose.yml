@@ -1,0 +1,73 @@
+version: "3"
+services:
+
+  # Nginx instance controlling traffic to each service.
+  nginx:
+    restart: always
+    build:
+      context: nginx
+      args:
+        - HOSTNAME=${HOSTNAME}
+    ports:
+      - 80:80
+      - 443:443
+    container_name: nginx
+    volumes:
+      - ./nginx/letsencrypt:/usr/share/nginx/html
+      - ./certbot/etc:/usr/share/keys
+    networks:
+      - public
+
+  # Certbot for SSL automation.
+  certbot:
+    container_name: certbot
+    image: certbot/certbot
+    volumes:
+      - ./keys:/var/lib/letsencrypt
+      - ./nginx/letsencrypt:/data/letsencrypt
+      - ./certbot/etc:/etc/letsencrypt
+      - ./certbot/log:/var/log/letsencrypt
+    networks:
+      - public
+    depends_on:
+      - nginx
+
+  mongo:
+    build:
+      context: mongo
+    container_name: ${DB_CONTAINER}
+    restart: always
+    volumes:
+      - ./mongo/data:/data/db
+    expose:
+      - 27017
+    networks:
+      - public
+    stdin_open: true
+    tty: true
+    restart: always
+
+  ei:
+    build:
+      context: ei
+    expose:
+      - 5000
+    container_name: ei
+    depends_on:
+      - "mongo"
+    environment:
+      APP_PORT: 5000
+      HOSTNAME: ${HOSTNAME}
+      ROOT: ${SITE_ROOT}
+      SITE_NAME: ${SITE_NAME}
+      SITE_COLOR: ${SITE_COLOR}
+      MONGO_HOST: ${DB_CONTAINER}
+      MONGO_INITDB_DATABASE: ${DB_NAME}
+      MONGO_COLLECTION: ${COLLECTION_NAME}
+    networks:
+      - public
+    restart: on-failure
+
+networks:
+  public:
+    driver: bridge
