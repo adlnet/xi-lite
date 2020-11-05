@@ -24,12 +24,16 @@ The repo comes with an `example.env` file that you will want to (but really shou
 Service|Variable|Why am I setting this?
 -|-|-
 **Nginx**|`HOSTNAME`|Domain name of the machine used to host this stack, can be `localhost`
-**XI**|`DB_CONTAINER`|Name of the database container for reference. 
-**XI**|`DB_NAME`|Name of the database in the database container.
-**XI**|`COLLECTION_NAME`|Name of the mongo db collection.
-**XI**|`SITE_ROOT`|Url root for the XI service, optional.
-**XI**|`SITE_NAME`|Name for the html title.
-**XI**|`API_SECRET`|The secret that will be used for API queries with the XI.
+**XI**|`DB_CONTAINER`|Name of the database container for reference. Can also be a path
+**^**|`DB_NAME`|Name of the database in the database container.
+**^**|`COLLECTION_NAME`|Name of the mongo db collection.
+**^**|`SITE_ROOT`|Url root for the XI service, optional.
+**^**|`SITE_NAME`|Name for the html title.
+**^**|`KEYCLOAK_URL`|Root path for the intended Keycloak server.
+**^**|`KEYCLOAK_REALM`|Realm name for the Keycloak instance.
+**^**|`KEYCLOAK_CLIENT`|Client name for the Keycloak instance.
+**^**|`API_SECRET`|The secret that will be used for API queries with the XI.
+**^**|`EXACT_RESOLUTION_MATCH`|Whether or not the competency and URL filtering will require exact string matches.
 
 ### Setting up SSL
 This stack uses Certbot and Nginx to handle SSL, including temporary self-signed certs to help the process along.  We run the `init-ssl.sh` script during setup to place these into a directory corresponding to Nginx's `HOSTNAME` variable.  
