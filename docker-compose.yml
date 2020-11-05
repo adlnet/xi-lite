@@ -70,7 +70,7 @@ services:
       KEYCLOAK_CLIENT: ${KEYCLOAK_CLIENT}
 
       API_SECRET : ${API_SECRET}
-      EXACT_RESOLUTION_MATCH: ${EXACT_RESOLUTION_MATCH }
+      EXACT_RESOLUTION_MATCH: ${EXACT_RESOLUTION_MATCH}
     networks:
       - public
     restart: on-failure
