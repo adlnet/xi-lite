@@ -40,7 +40,7 @@ services:
     volumes:
       - ./mongo/data:/data/db
     expose:
-      - 27017
+      - 27017:27017
     networks:
       - public
     stdin_open: true
