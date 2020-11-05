@@ -1,6 +1,6 @@
 module.exports = {
 
-    secret: "some-long-secret",
+    secret: (process.env.API_SECRET || "some-long-secret"),
 
     keycloak: {
         "realm": (process.env.KEYCLOAK_REALM || "tla"),
