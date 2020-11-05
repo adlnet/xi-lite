@@ -29,10 +29,24 @@ module.exports = {
         });
     }),
 
-    get: async (options) => new Promise((resolve, _) => {
+    get: async (options, competency, content) => new Promise((resolve, _) => {
+
+        let filter = {}
+        let onlyExact = config.mongo.exactMatching
+
+        if (competency)
+            filter.educationalAlignment = {
+                $elemMatch: {
+                    competency: (onlyExact) ? {$eq: competency} : {$regex: `.*${competency}.*`}
+                }
+            }
+        if (content)
+            filter.url = (onlyExact) ? {$eq: content} : {$regex: `.*${content}.*`}
+
+        console.log(filter);
 
         db.collection(collectionName)
-            .find({}, options).toArray(function (err, res) {
+            .find(filter, options).toArray(function (err, res) {
                 console.log("Got records:", res);
                 resolve(res);
             });

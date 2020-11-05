@@ -105,7 +105,11 @@ app.get(config.ROOT + "/api/v1/experiences", async function (req, res, next) {
         "skip": (Number(req.query.offset) || 0),
         "sort": "_id"
     }
-    let results = await mongo.get(options).catch(
+
+    let content = (req.query.url || req.query.contentUrl || req.query.contentURL || undefined);
+    let competency = (req.query.competency || req.query.educationalAlignment || undefined);
+
+    let results = await mongo.get(options, competency, content).catch(
         err => {
             console.error(err);
             res.status(500).json({ message: 'Internal server error' });
@@ -138,12 +142,6 @@ app.delete(config.ROOT + "/api/v1/experiences/:id", async function (req, res, ne
     let results = await mongo.delete(id);
     res.json(results);
 });
-
-
-
-
-
-
 
 
 /***

@@ -14,7 +14,16 @@ module.exports = {
     mongo: {
         host: (process.env.DB_CONTAINER || "192.168.0.134"),
         db: (process.env.DB_NAME || "mydb"),
-        collection: (process.env.COLLECTION_NAME || "records")
+        collection: (process.env.COLLECTION_NAME || "records"),
+        
+        /**
+         * Require exact matching with the resolution queries for 
+         * content and competency URIs?
+         * 
+         * If FALSE, string subsets will be accepted.
+         * if TRUE, only exact equality will work.
+         */
+        exactMatching: (process.env.EXACT_RESOLUTION_MATCH || false),
     },
 
     HOSTNAME: process.env.HOSTNAME,
