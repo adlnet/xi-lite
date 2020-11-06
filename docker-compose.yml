@@ -46,6 +46,8 @@ services:
     stdin_open: true
     tty: true
     restart: always
+    networks:
+      - public
 
   xi:
     build:
@@ -59,9 +61,10 @@ services:
       ROOT: ${SITE_ROOT}
       SITE_NAME: ${SITE_NAME}
       SITE_COLOR: ${SITE_COLOR}
-      MONGO_HOST: ${DB_CONTAINER}
-      MONGO_INITDB_DATABASE: ${DB_NAME}
-      MONGO_COLLECTION: ${COLLECTION_NAME}
+
+      DB_CONTAINER: ${DB_CONTAINER}
+      DB_NAME: ${DB_NAME}
+      COLLECTION_NAME: ${COLLECTION_NAME}
 
       KEYCLOAK_URL: ${KEYCLOAK_URL}
       KEYCLOAK_REALM: ${KEYCLOAK_REALM}
