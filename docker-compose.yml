@@ -47,10 +47,10 @@ services:
     tty: true
     restart: always
 
-  ei:
+  xi:
     build:
-      context: ei
-    container_name: ei
+      context: xi
+    container_name: xi
     depends_on:
       - "mongo"
     environment:
