@@ -1,5 +1,5 @@
 ## Experience Index Lite
-Overly simplified implementation of an XI for the sake of initial testing with DAU sandbox.
+Simplified implementation of an Experience Index (XI) initially developed as a test appliance DAU sandbox.
 
 This repo contains a Docker Compose setup for standing up a simple XI, with Expess proxied behind Nginx for SSL and the common ENV variables ready to be configured.  The scripts here assume an Ubuntu-like OS, but can be modified for others without much issue.
 
